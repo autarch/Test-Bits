@@ -81,6 +81,12 @@ like(
 );
 
 like(
+    exception { bits_is( "\x{2048}", [42] ) },
+    qr{\Qbits_is() should be passed a scalar of binary data and an array reference of numbers. You passed a string with UTF-8 data as the first argument at t/bits_is.t line \E\d+},
+    'got error passing an arrayref as first argument to bits_is()'
+);
+
+like(
     exception { bits_is( 'foo', 'foo' ) },
     qr{\Qbits_is() should be passed a scalar of binary data and an array reference of numbers. You passed a plain scalar as the second argument at t/bits_is.t line \E\d+},
     'got error passing a scalar as second argument to bits_is()'

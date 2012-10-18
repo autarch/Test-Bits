@@ -3,7 +3,7 @@ package Test::Bits;
 use strict;
 use warnings;
 
-use List::AllUtils qw( all min );
+use List::AllUtils qw( all any min );
 use Scalar::Util qw( blessed reftype );
 
 use parent qw( Test::Builder::Module );
@@ -25,10 +25,7 @@ sub bits_is ($$;$) {
     _check_got($got);
     _check_expect($expect);
 
-    $got = do {
-        use bytes;
-        [ map { ord($_) } split //, $got ];
-    };
+    $got = [ map { ord($_) } split //, $got ];
 
     my $got_length    = @{$got};
     my $expect_length = @{$expect};
@@ -83,6 +80,12 @@ sub _check_got {
             . ' You passed a '
             . reftype($got)
             . ' reference as the first argument';
+    }
+    else {
+        if ( any { ord($_) > 255 } split //, $got ) {
+            $error = $UsageErrorBase
+                . ' You passed a string with UTF-8 data as the first argument';
+        }
     }
 
     $Builder->croak($error)
