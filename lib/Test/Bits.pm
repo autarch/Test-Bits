@@ -43,7 +43,7 @@ sub bits_is ($$;$) {
 
         push @errors,
             sprintf(
-            "Binary data begins differing at byte $i\n"
+            "Binary data begins differing at byte $i.\n"
                 . "  Got:    %08b\n"
                 . "  Expect: %08b",
             $got->[$i],

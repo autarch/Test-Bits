@@ -23,7 +23,7 @@ _test_bits_is(
 
 {
     my $diag
-        = 'Binary data begins differing at byte 0' . "\n"
+        = 'Binary data begins differing at byte 0.' . "\n"
         . '  Got:    01111001' . "\n"
         . '  Expect: 01111000' . "\n";
 
@@ -38,7 +38,7 @@ _test_bits_is(
 
 {
     my $diag
-        = 'Binary data begins differing at byte 2' . "\n"
+        = 'Binary data begins differing at byte 2.' . "\n"
         . '  Got:    01111001' . "\n"
         . '  Expect: 01111010' . "\n";
 
@@ -55,7 +55,7 @@ _test_bits_is(
     my $diag
         = 'The two pieces of binary data are not the same length (got 2, expected 3).'
         . "\n"
-        . 'Binary data begins differing at byte 1' . "\n"
+        . 'Binary data begins differing at byte 1.' . "\n"
         . '  Got:    01111000' . "\n"
         . '  Expect: 01111001' . "\n";
 
