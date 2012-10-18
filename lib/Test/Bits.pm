@@ -135,3 +135,59 @@ sub _check_expect {
 }
 
 1;
+
+# ABSTRACT: Provides a bits_is() subroutine for testing binary data
+
+__END__
+
+=head1 SYNOPSIS
+
+  use Test::Bits;
+
+  bits_is(
+      $binary_data,
+      [ 0b0010101, 0b01111100 ],
+      'binary data contains expected values'
+  );
+
+=head1 DESCRIPTION
+
+This module provides a single subroutine, C<bits_is()>, for testing binary
+data.
+
+This module is quite similar to L<Test::BinaryData> and L<Test::HexString> in
+concept. The difference is that this module shows failure diagnostics in a
+different way, and has a slightly different calling style. Depending on the
+nature of the data you're working with, this module may be easier to work with.
+
+In particular, when you're doing a lot of bit twiddling, this module's
+diagnostic output may make it easier to diagnose failures. A typical failure
+diagnostic will look like this:
+
+   The two pieces of binary data are not the same length (got 2, expected 3).
+   Binary data begins differing at byte 1.
+     Got:    01111000
+     Expect: 01111001
+
+=head1 USAGE
+
+The C<bits_is()> subroutine takes two required arguments and an optional test
+name.
+
+The first argument should be a plain scalar containing I<binary> data. If it
+contains any UTF-8 characters an error will be thrown.
+
+The second argument should be an array reference of numbers from 0-255
+representing the expected value of each byte in the first argument.
+
+This allows you write the numbers out in binary format (0bXXXXXXXX) for test
+cases if you wish to.
+
+=head1 BUGS
+
+Please report any bugs or feature requests to C<bug-test-bits@rt.cpan.org>, or
+through the web interface at L<http://rt.cpan.org>. I will be notified, and
+then you'll automatically be notified of progress on your bug as I make
+changes.
+
+=cut
