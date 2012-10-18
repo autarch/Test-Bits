@@ -169,6 +169,8 @@ diagnostic will look like this:
      Got:    01111000
      Expect: 01111001
 
+Note that the bytes are numbered starting from 0 in the diagnostic output.
+
 =head1 USAGE
 
 The C<bits_is()> subroutine takes two required arguments and an optional test
