@@ -142,7 +142,7 @@ sub _test_bits_is {
         {
             ok   => $ok,
             name => $name,
-            diag => ( $diag // q{} ),
+            diag => ( $diag || q{} ),
         },
         $name
     );
