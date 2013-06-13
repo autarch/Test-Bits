@@ -15,6 +15,10 @@ our $Builder;
 my $UsageErrorBase
     = 'bits_is() should be passed a scalar of binary data and an array reference of numbers.';
 
+=for Pod::Coverage bits_is
+
+=cut
+
 sub bits_is ($$;$) {
     my $got    = shift;
     my $expect = shift;
